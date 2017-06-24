@@ -4,16 +4,16 @@
 
 v6ops                                                      J. Brzozowski
 Internet-Draft                                             Comcast Cable
-Intended status: Best Current Practice                          Schinazi
-Expires: September 14, 2017                                      Chesire
+Intended status: Best Current Practice                       D. Schinazi
+Expires: September 14, 2017                                   S. Chesire
                                                                    Apple
-                                                                 Colitti
-                                                                   Kline
-                                                                 Linkova
+                                                              L. Colitti
+                                                                E. Kline
+                                                              J. Linkova
                                                                   Google
-                                                                   Keane
+                                                                M. Keane
                                                                Microsoft
-                                                                    Saab
+                                                                 P. Saab
                                                                 Facebook
                                                           March 13, 2017
 
@@ -648,19 +648,19 @@ Authors' Addresses
    Email: john_brzozowski@cable.comcast.com
 
 
-   David
+   David Schinazi
    Apple
 
    Email: dschinazi@apple.com
 
 
-   Stuart
+   Stuart Chesire
    Apple
 
    Email: cheshire@apple.com
 
 
-   Lorenzo
+   Lorenzo Colitti
    Google
 
    Email: lorenzo@google.com
@@ -674,25 +674,25 @@ Brzozowski, et al.     Expires September 14, 2017              [Page 12]
 Internet-Draft         IETF IPv6 only Incremental             March 2017
 
 
-   Erik
+   Erik Kline
    Google
 
    Email: ek@google.com
 
 
-   Jen
+   Jen Linkova
    Google
 
    Email: furry@google.com
 
 
-   Marcus
+   Marcus Keane
    Microsoft
 
    Email: marcus.keane@microsoft.com
 
 
-   Paul
+   Paul Saab
    Facebook
 
    Email: ps@fb.com
