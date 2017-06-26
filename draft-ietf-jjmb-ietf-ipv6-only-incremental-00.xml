@@ -47,28 +47,21 @@ noDerivativesTrust200902,
     <!-- The abbreviated title is used in the page header - it is only
 	 necessary if the full title is longer than 39 characters -->
 
-    <title>IETF IPv6 only Incremental</title>
+    <title abbrev="IETF IPv6-only Wi-Fi Incremental">
+      Incremental deployment of IPv6-only Wi-Fi for IETF Meetings
+    </title>
 
     <author fullname="John Jason Brzozowski" initials="J."
             surname="Brzozowski">
       <organization>Comcast Cable</organization>
-
       <address>
         <postal>
           <street>1701 John F. Kennedy Blvd.</street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city>Philadelphia</city>
-
           <region>PA</region>
-
           <country>USA</country>
         </postal>
-
         <email>john_brzozowski@cable.comcast.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
@@ -104,115 +97,70 @@ noDerivativesTrust200902,
 
     <author fullname="Lorenzo Colitti" initials="L." surname="Colitti">
       <organization>Google</organization>
-
       <address>
         <postal>
           <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city></city>
-
           <region></region>
-
           <country></country>
         </postal>
-
         <email>lorenzo@google.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
     <author fullname="Erik Kline" initials="E." surname="Kline">
       <organization>Google</organization>
-
       <address>
         <postal>
           <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city></city>
-
           <region></region>
-
           <country></country>
         </postal>
-
         <email>ek@google.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
     <author fullname="Jen Linkova" initials="J." surname="Linkova">
       <organization>Google</organization>
-
       <address>
         <postal>
           <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city></city>
-
           <region></region>
-
           <country></country>
         </postal>
-
         <email>furry@google.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
     <author fullname="Marcus Keane" initials="M." surname="Keane">
       <organization>Microsoft</organization>
-
       <address>
         <postal>
           <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city></city>
-
           <region></region>
-
           <country></country>
         </postal>
-
         <email>marcus.keane@microsoft.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
     <author fullname="Paul Saab" initials="P." surname="Saab">
       <organization>Facebook</organization>
-
       <address>
         <postal>
           <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
           <city></city>
-
           <region></region>
-
           <country></country>
         </postal>
-
         <email>ps@fb.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
-    <date day="13" month="March" year="2017" />
+    <date day="26" month="June" year="2017" />
 
     <!-- Meta-data Declarations -->
 
@@ -222,49 +170,62 @@ noDerivativesTrust200902,
 
     <abstract>
       <t>The purpose of this document is to provide a blueprint and guidance
-      for adopters of IPv6 only. This document outlines infrastructure and
-      operational guidance that operators must consider when deploying IPv6
-      only networks using NAT64 and DNS64 to support communication to legacy
-      IPv4 only services.</t>
+      for deploying IPv6-only Wi-Fi at IETF meetings. This document outlines
+      infrastructure and operational guidance that operators must consider
+      when deploying IPv6-only networks using NAT64 and DNS64 to support
+      communication to legacy IPv4-only services.</t>
     </abstract>
   </front>
 
   <middle>
+    <?rfc needLines="10" ?>
     <section title="Introduction">
-      <t>Outline the requirements and design principles for an IPv6 only
-      network infrastructure that includes support for IPv4 only content. This
-      document will also outline techniques and requirements for network
-      management, telemetry, and the operations and support for the IPv6 only
+      <t>The purpose of this document is to provide a blueprint and guidance
+      for deploying IPv6-only Wi-Fi at IETF meetings. This document outlines
+      infrastructure and operational guidance that operators must consider
+      when deploying IPv6-only networks using NAT64 and DNS64 to support
+      communication to legacy IPv4-only services.</t>
+
+      <t>One of the main strengths of the IETF has always been an insistence
+      on running code. As such IETF meetings were one of the first
+      deployments of a dual-stack network to help test the first
+      implementations of IPv6. Many years later, as several networks are
+      shifting towards IPv6-only, it is the reponsibility of the IETF to
+      lead the trend and make their main network IPv6-only.</t>
+
+      <t>This document outlines the requirements and design principles for an IPv6-only
+      network infrastructure that includes support for IPv4-only content.
+      It also discusses techniques and requirements for network
+      management, telemetry, and the operations and support for the IPv6-only
       network. Recommendations and best practices for operations and support
       will be provided, however, alternate approaches may be utilized.
       Disabling or removal of IPv4 stacks is out of scope for this document.
-      This document focused on the explicit provisioning of IPv6 only using
+      This document focuses on the explicit provisioning of IPv6-only using
       NAT64 <xref target="RFC6146">RFC6146</xref> and DNS64 <xref
-      target="RFC6147">RFC6147</xref> to access IPv4 only content, services,
-      and applications.</t>
+      target="RFC6147">RFC6147</xref> to access IPv4-only content and services.</t>
     </section>
 
     <section title="Design Principles">
-      <section title="Infrastructure (Network)">
+      <section title="Network Infrastructure">
         <t>The following a specific network design details that are minimally
-        required to support an IPv6 only network that utilized NAT64 and
+        required to support an IPv6-only network that utilized NAT64 and
         DNS64. The following have been drawn from real deployment scenarios
-        for large scale uses of IPv6 only with NAT64 and DNS64. The parameters
-        specified here are specific to providing IPv6 only connectivity. It is
-        assumed that IPv6 only is provisioned and that IPv4 stacks remain
+        for large scale uses of IPv6-only with NAT64 and DNS64. The parameters
+        specified here are specific to providing IPv6-only connectivity. It is
+        assumed that IPv6-only is provisioned and that IPv4 stacks remain
         active on network and host interfaces. The disabling or removal of
         IPv4 stacks from hosts or routers is out of scope for this document.
         As such it is important to note that link local IPv4 <xref
         target="RFC3927">RFC3927</xref> will likely remain active and will
         appear on hosts and network infrastructure.</t>
 
-        <t>The following section outlines the requirement to provisioning IPv6
-        only. We minimally assume that SLAAC will be utilized, however, for
+        <t>The following section outlines the requirement to provisioning
+        IPv6-only. We minimally assume that SLAAC will be utilized, however, for
         completeness the parameters required for DHCPv6 <xref
         target="RFC3315">RFC3315</xref> and <xref
         target="RFC3736">RFC3736</xref> are also provided:
           <list style="symbols">
-            <t>IPv6 only - hosts are expected to be provisioned with IPv6 only
+            <t>IPv6-only - hosts are expected to be provisioned with IPv6-only
             connectivity, however, link local IPv4 is likely to be
             present.</t>
 
@@ -277,7 +238,7 @@ noDerivativesTrust200902,
 
             <t>The use of SLAAC <xref target="RFC4862">RFC4862</xref> must be
             signalled by the network, specifically for each transmitted PIO
-            the A but must be set to 1 (one)</t>
+            the A but must be set to 1 (one).</t>
 
             <t>DHCPv6 support should be included but is not required, as such
             both the M and O bits must be set to 1 (one). Whether stateless or
@@ -296,13 +257,13 @@ noDerivativesTrust200902,
             to match those sent via DHCPv6.</t>
           </list>
         To ensure seamless and to support an incremental deployment
-        of IPv6 only access to legacy dual stack infrastructure should remain
+        of IPv6-only access to legacy dual stack infrastructure should remain
         available. The following are recommended approaches that may be
         considered to achieve the same.</t>
 
         <t>
           <list style="symbols">
-            <t>The deployment of IPv6 only with NAT64 and DNS64 may very well
+            <t>The deployment of IPv6-only with NAT64 and DNS64 may very well
             help to identify applications, services, or use cases that are not
             entirely compatible with the same. It is therefore important to
             ensure that users of IP networks, whether wired or wireless, have
@@ -313,14 +274,14 @@ noDerivativesTrust200902,
             dual stack enabled is also recommended.</t>
           </list>
         This document assumes that dual stack connectivity is
-        available by default and that IPv4 only connectivity is no longer
+        available by default and that IPv4-only connectivity is no longer
         supported. As such it is out of scope for this document outline
-        fallback or access to legacy connectivity that is IPv4 only.</t>
+        fallback or access to legacy connectivity that is IPv4-only.</t>
       </section>
     </section>
 
     <section title="Network Services">
-      <t>The following network services are required for an IPv6 only where
+      <t>The following network services are required for an IPv6-only where
       support for and access to IPv4 content, services, and applications are
       required.</t>
 
@@ -335,7 +296,7 @@ noDerivativesTrust200902,
             performance impacts of query logging must be noted but are largely
             out of scope for this document. Query logging is essential to
             determine the volume and make up of DNS queries and replies that
-            are are specific to DNS64 and IPv4 only content, services, and
+            are are specific to DNS64 and IPv4-only content, services, and
             applications.</t>
           </list>
         </t>
@@ -345,7 +306,7 @@ noDerivativesTrust200902,
         <t>The following recommendations apply to the use and deployment of
         NAT64:
           <list style="symbols">
-            <t>DNS64 is a critical aspect to direct requests from IPv6 only
+            <t>DNS64 is a critical aspect to direct requests from IPv6-only
             hosts to a NAT64 service.</t>
 
             <t>NAT64 configurations vary widely, port allocation techniques
@@ -386,18 +347,18 @@ noDerivativesTrust200902,
     <section title="User Equipment">
       <t>Host Address Assignment and Configuration:
         <list style="symbols">
-          <t>Hosts MUST support SLAAC</t>
+          <t>Hosts MUST support SLAAC.</t>
 
           <t>Hosts SHOULD support RDNSS <xref target="RFC6106">RFC6106</xref>
           for the acquisition of DNS
-          server IPv6 addresses and a DNS Search List</t>
+          server IPv6 addresses and a DNS Search List.</t>
 
           <t>Hosts MAY support DHCPv6 for address acquisition, the use of
-          DHCPv6 for address acquisition is not prohibited</t>
+          DHCPv6 for address acquisition is not prohibited.</t>
 
           <t>DHCPv6 option to configure DNS server option 23 and domain search
           list option 24 <xref target="RFC3646">RFC3646</xref>
-          address MUST be implemented if DHCPv6 is to be utilized</t>
+          address MUST be implemented if DHCPv6 is to be utilized.</t>
         </list>
       </t>
 
@@ -419,9 +380,9 @@ noDerivativesTrust200902,
 
     <section title="Network Management">
       <t>The focus of this document is user equipment and hosts. The network
-      and network service requirements are oriented around providing IPv6 only
+      and network service requirements are oriented around providing IPv6-only
       connectivity to use to allow for the use of NAT64 and DNS64 to maintain
-      reachability to IPv4 only content, applications, and services.
+      reachability to IPv4-only content, applications, and services.
       Operations and management of the underlying network is technically out
       of scope for this document, however, given the relevance of the same to
       the focus of this draft some guidance is being provided.</t>
@@ -444,7 +405,7 @@ noDerivativesTrust200902,
       IPv4 may be observed, present, and possibly used. It is out of scope for
       this document to prevent the use of IPv4 entirely.</t>
 
-      <t>Depending on the level of readiness IPv6 only network management may
+      <t>Depending on the level of readiness IPv6-only network management may
       or may not be possible. Network management and operations includes but
       is not limited to the following:
         <list style="symbols">
@@ -454,10 +415,10 @@ noDerivativesTrust200902,
           <t>Remote Syslog communications</t>
         </list>
       While it is strongly recommended that all network management
-      and operations be performed over IPv6 only it is not strictly required.
+      and operations be performed over IPv6-only it is not strictly required.
       However, it is important to note that the presence and use of IPv4 for
       network management and operations must not impede or impact the use of
-      IPv6 only with NAT64 and DNS64.</t>
+      IPv6-only with NAT64 and DNS64.</t>
     </section>
 
     <section title="Telemetry and Monitoring">
@@ -500,7 +461,7 @@ noDerivativesTrust200902,
 
     <section title="Support for User Applications and Services ">
       <t>Following is a list of commonly used applications and services that
-      are expected to operate, without incident, when used in an IPv6 only
+      are expected to operate, without incident, when used in an IPv6-only
       environment that utilizes NAT64 and DNS64. The list below is not
       exhaustive.
         <list style="symbols">
@@ -561,7 +522,7 @@ noDerivativesTrust200902,
 
     <section title="Known Client-side Issues">
       <t>Following are known client side issues that are specific to the
-      deployment of IPv6 only networks and/or the use of NAT64/DNS64:<list
+      deployment of IPv6-only networks and/or the use of NAT64/DNS64:<list
           style="symbols">
           <t>Use of literal IPv4 addresses - the use of literal IPv4 addresses
           is a known issue given the approach that is documented in this I-D.
@@ -583,10 +544,10 @@ noDerivativesTrust200902,
     <section anchor="security" title="Security Considerations">
       <t><list style="symbols">
           <t>The vastness of the IPv6 address space often makes it more
-          difficult to scan the same unlike legacy IPv4 only or dual stack IP
-          networks. It is conceivable that IPv6 only network represent a
+          difficult to scan the same unlike legacy IPv4-only or dual stack IP
+          networks. It is conceivable that IPv6-only network represent a
           reduction in attack surface area which in turn could be viewed a
-          security improvement compared to IPv4 only or dual stack IP
+          security improvement compared to IPv4-only or dual stack IP
           networks.</t>
 
           <t>Given the criticality of the DNS64 for reachability to the NAT64,
@@ -594,16 +555,16 @@ noDerivativesTrust200902,
           the DNS64 and NAT64 which could in turn impact the end user
           experience. Worse poisoning of the DNS64 and/or NAT64 could result
           in redirection of end use devices to malicious hosts. It is likely
-          that this vulnerability is no greater in IPv6 only networks
-          utilizing DNS64 and NAT64 compared to traditional IPv4 only or dual
+          that this vulnerability is no greater in IPv6-only networks
+          utilizing DNS64 and NAT64 compared to traditional IPv4-only or dual
           stack networks.</t>
         </list></t>
     </section>
 
     <section anchor="future" title="Future Work">
       <t>The following items are out of scope for this document, however, the
-      following are listed as future work items specific to incremental IPv6
-      only deployments: <list style="symbols">
+      following are listed as future work items specific to incremental
+      IPv6-only deployments: <list style="symbols">
           <t>Support for IPv6 prefix delegation</t>
 
           <t>Disabling IPv4 stacks at some point in the future</t>
@@ -614,23 +575,24 @@ noDerivativesTrust200902,
 
     <section anchor="industry" title="Related Industry Efforts">
       <t><list style="symbols">
-          <t>Comcast new building and IPv6 only (John Jason Brzozowski
+          <t>Comcast new building and IPv6-only (John Jason Brzozowski
           &lt;john_brzozowski@comcast.com&gt;)</t>
 
-          <t>Microsoft corporate IT IPv6 only? (Marcus Keane
+          <t>Microsoft corporate IT IPv6-only? (Marcus Keane
           &lt;marcus.keane@microsoft.com&gt;)</t>
 
           <t>Google (Jen Linkova &lt;furry@google.com&gt;)</t>
 
         </list></t>
     </section>
-
+<!--
     <section anchor="ack" title="Acknowledgements">
       <t>The authors would like to thank the following, in alphabetical order,
       for their contributions:</t>
 
       <t></t>
     </section>
+-->
   </middle>
 
   <!--  *****BACK MATTER ***** -->
