@@ -3,14 +3,14 @@
      which is available here: http://xml.resource.org. -->
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!-- One method to get references from the online citation libraries.
-     There has to be one entity for each item to be referenced. 
+     There has to be one entity for each item to be referenced.
      An alternate method (rfc include) is described in the references.
 -->
 <!ENTITY RFC3697 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3697.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
-<!-- For a complete list and description of processing instructions (PIs), 
+<!-- For a complete list and description of processing instructions (PIs),
      please see http://xml.resource.org/authoring/README.html. -->
 <!-- Below are generally applicable Processing Instructions (PIs) that
 most I-Ds might want to use. (Here they are set differently than their defaults in xml2rfc v1.32) -->
@@ -38,7 +38,7 @@ most I-Ds might want to use. (Here they are set differently than their defaults 
      ipr values: trust200902, noModificationTrust200902,
 noDerivativesTrust200902,
         or pre5378Trust200902
-     you can add the attributes updates="NNNN" and obsoletes="NNNN" 
+     you can add the attributes updates="NNNN" and obsoletes="NNNN"
      they will automatically be output with "(if approved)" -->
 
   <!-- ***** FRONT MATTER ***** -->
@@ -47,8 +47,7 @@ noDerivativesTrust200902,
     <!-- The abbreviated title is used in the page header - it is only
 	 necessary if the full title is longer than 39 characters -->
 
-    <title abbrev="IETF IPv6 only Incremental">IETF IPv6 only
-    Incremental</title>
+    <title>IETF IPv6 only Incremental</title>
 
     <author fullname="John Jason Brzozowski" initials="J."
             surname="Brzozowski">
@@ -74,46 +73,32 @@ noDerivativesTrust200902,
     </author>
 
     <author fullname="David Schinazi" initials="D." surname="Schinazi">
-      <organization>Apple</organization>
-
+      <organization>Apple Inc.</organization>
       <address>
         <postal>
-          <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
-          <city></city>
-
-          <region></region>
-
-          <country></country>
+          <street>1 Infinite Loop</street>
+          <city>Cupertino</city>
+          <region>California</region>
+          <code>95014</code>
+          <country>US</country>
         </postal>
-
+        <phone></phone>
         <email>dschinazi@apple.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
-    <author fullname="Stuart Chesire" initials="S." surname="Chesire">
-      <organization>Apple</organization>
-
+    <author initials='S.' surname='Cheshire' fullname='Stuart Cheshire'>
+      <organization>Apple Inc.</organization>
       <address>
         <postal>
-          <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
-          <city></city>
-
-          <region></region>
-
-          <country></country>
+          <street>1 Infinite Loop</street>
+          <city>Cupertino</city>
+          <region>California</region>
+          <code>95014</code>
+          <country>USA</country>
         </postal>
-
+        <phone></phone>
         <email>cheshire@apple.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
@@ -277,9 +262,8 @@ noDerivativesTrust200902,
         only. We minimally assume that SLAAC will be utilized, however, for
         completeness the parameters required for DHCPv6 <xref
         target="RFC3315">RFC3315</xref> and <xref
-        target="RFC3736">RFC3736</xref>are also provided:</t>
-
-        <t><list style="symbols">
+        target="RFC3736">RFC3736</xref> are also provided:
+          <list style="symbols">
             <t>IPv6 only - hosts are expected to be provisioned with IPv6 only
             connectivity, however, link local IPv4 is likely to be
             present.</t>
@@ -310,12 +294,14 @@ noDerivativesTrust200902,
             the DNS Server IPv6 address(es) and DNS-SL are required. If DHCPv6
             support is deployed the values sent here for RDNSS are recommended
             to match those sent via DHCPv6.</t>
-          </list>To ensure seamless and to support an incremental deployment
+          </list>
+        To ensure seamless and to support an incremental deployment
         of IPv6 only access to legacy dual stack infrastructure should remain
         available. The following are recommended approaches that may be
         considered to achieve the same.</t>
 
-        <t><list style="symbols">
+        <t>
+          <list style="symbols">
             <t>The deployment of IPv6 only with NAT64 and DNS64 may very well
             help to identify applications, services, or use cases that are not
             entirely compatible with the same. It is therefore important to
@@ -325,7 +311,8 @@ noDerivativesTrust200902,
             accordingly, e.g. example-ssid-dual-stack or example-ssid-legacy.
             For wired network connectivity having secondary ports that are
             dual stack enabled is also recommended.</t>
-          </list>This document assumes that dual stack connectivity is
+          </list>
+        This document assumes that dual stack connectivity is
         available by default and that IPv4 only connectivity is no longer
         supported. As such it is out of scope for this document outline
         fallback or access to legacy connectivity that is IPv4 only.</t>
@@ -339,9 +326,8 @@ noDerivativesTrust200902,
 
       <section title="DNS64">
         <t>The following recommendations apply to the use and deployment of
-        DNS64:</t>
-
-        <t><list style="symbols">
+        DNS64:
+          <list style="symbols">
             <t>Use of the well known DNS64 prefix per <xref
             target="RFC6052">RFC6052</xref></t>
 
@@ -351,14 +337,14 @@ noDerivativesTrust200902,
             determine the volume and make up of DNS queries and replies that
             are are specific to DNS64 and IPv4 only content, services, and
             applications.</t>
-          </list></t>
+          </list>
+        </t>
       </section>
 
       <section title="NAT64">
         <t>The following recommendations apply to the use and deployment of
-        NAT64:</t>
-
-        <t><list style="symbols">
+        NAT64:
+          <list style="symbols">
             <t>DNS64 is a critical aspect to direct requests from IPv6 only
             hosts to a NAT64 service.</t>
 
@@ -369,16 +355,16 @@ noDerivativesTrust200902,
             per device, each has different properties. It is generally
             recommended to allocate IPv4 ports per device in an effort to
             maximize IPv4 utilization for NAT64.</t>
-          </list></t>
+          </list>
+        </t>
       </section>
 
       <section title="DHCPv6">
         <t>Support for DHCPv6 may be required in some deployments. If
         required, parameters pertaining to IPv6 router discovery may
         requirement adjustment. The following outlines the guidance specific
-        to the use of DHCPv6:</t>
-
-        <t><list style="symbols">
+        to the use of DHCPv6:
+          <list style="symbols">
             <t>Stateless DHCPv6 SHOULD be supported to facilitate the
             transmission of DNS servers IPv6 address(es) and DNS search
             lists.</t>
@@ -392,40 +378,43 @@ noDerivativesTrust200902,
             necessary stateful DHCPv6 will likely be mandatory. (see Future
             Work) The details of IPv6 prefix delegation is out of scope for
             this document.</t>
-          </list></t>
+          </list>
+        </t>
       </section>
     </section>
 
     <section title="User Equipment">
-      <t>Host Address Assignment and Configuration:</t>
-
-      <t><list style="symbols">
+      <t>Host Address Assignment and Configuration:
+        <list style="symbols">
           <t>Hosts MUST support SLAAC</t>
 
-          <t>Hosts SHOULD support RDNSS [RFC6106] for the acquisition of DNS
+          <t>Hosts SHOULD support RDNSS <xref target="RFC6106">RFC6106</xref>
+          for the acquisition of DNS
           server IPv6 addresses and a DNS Search List</t>
 
           <t>Hosts MAY support DHCPv6 for address acquisition, the use of
           DHCPv6 for address acquisition is not prohibited</t>
 
           <t>DHCPv6 option to configure DNS server option 23 and domain search
-          list option 24 [RFC3646] address MUST be implemented if DHCPv6 is to
-          be utilized</t>
-        </list></t>
+          list option 24 <xref target="RFC3646">RFC3646</xref>
+          address MUST be implemented if DHCPv6 is to be utilized</t>
+        </list>
+      </t>
 
-      <t>IPv4 support:</t>
+      <t>IPv4 support:
+          <list style="symbols">
+            <t>The IPv4 stacks of hosts MAY remain enabled, which means that
+            Link Local IPv4 <xref target="RFC3927">RFC3927</xref>
+            (168.254/16) addresses MAY continue to be
+            present and in use. Disabling of the IPv4 stack of hosts is out of
+            scope for this document.</t>
 
-      <t><list style="symbols">
-          <t>The IPv4 stacks of hosts MAY remain enabled, which means that
-          Link Local IPv4 [RFC3927] (168.254/16) addresses MAY continue to be
-          present and in use. Disabling of the IPv4 stack of hosts is out of
-          scope for this document.</t>
-
-          <t>Hosts MUST support connecting to IPv4-only servers by using the
-          NAT64/DNS64. Possible solutions include 464XLAT [RFC6877],
-          "Bump-in-the-Host" [RFC6535] and Happy Eyeballs v2
-          [draft-ietf-v6ops-rfc6555bis]</t>
-        </list></t>
+            <t>Hosts MUST support connecting to IPv4-only servers by using the
+            NAT64/DNS64. Possible solutions include 464XLAT <xref target="RFC6877">RFC6877</xref>,
+            "Bump-in-the-Host" <xref target="RFC6535">RFC6535</xref> and Happy Eyeballs v2
+            <xref target="HEv2"/>.</t>
+          </list>
+        </t>
     </section>
 
     <section title="Network Management">
@@ -443,15 +432,13 @@ noDerivativesTrust200902,
       in fact be dual stack for management and operations. It is required that
       the provisioning of IPv4 for user equipment and host connectivity not be
       supported. User equipment or host facing interfaces must not have
-      following:</t>
-
-      <t><list style="symbols">
+      following:
+        <list style="symbols">
           <t>Non-link local IPv4 addresses</t>
-
           <t>DHCPv4 is not supported or enabled</t>
-
           <t>DNS services over IPv4 is not supported or enabled</t>
-        </list></t>
+        </list>
+      </t>
 
       <t>Given the above, within a given VLAN it is possible and likely that
       IPv4 may be observed, present, and possibly used. It is out of scope for
@@ -459,17 +446,14 @@ noDerivativesTrust200902,
 
       <t>Depending on the level of readiness IPv6 only network management may
       or may not be possible. Network management and operations includes but
-      is not limited to the following:</t>
-
-      <t><list style="symbols">
+      is not limited to the following:
+        <list style="symbols">
           <t>Remote access to network infrastructure via SSH or telnet</t>
-
           <t>Remote SNMP communications</t>
-
           <t>Remote NETCONF communications</t>
-
           <t>Remote Syslog communications</t>
-        </list>While it is strongly recommended that all network management
+        </list>
+      While it is strongly recommended that all network management
       and operations be performed over IPv6 only it is not strictly required.
       However, it is important to note that the presence and use of IPv4 for
       network management and operations must not impede or impact the use of
@@ -485,22 +469,19 @@ noDerivativesTrust200902,
       paramount that connectivity information (e.g. DNS64 records) cannot be
       correlated with individual client nodes.</t>
 
-      <t>We can measure how hosts:</t>
-
-      <t><list style="symbols">
-          <t>Configure IPv6 addresses (SLAAC, DHCPv6) and which ones they
-          use</t>
-
+      <t>We can measure how hosts:
+        <list style="symbols">
+          <t>Configure IPv6 addresses (SLAAC, DHCPv6) and which ones they use</t>
           <t>Configure DNS server addresses (RDNSS vs DHCPv6)</t>
-        </list></t>
+        </list>
+      </t>
 
-      <t>We can measure what percentage of the traffic:</t>
-
-      <t><list style="symbols">
+      <t>We can measure what percentage of the traffic:
+        <list style="symbols">
           <t>Uses native IPv6</t>
-
           <t>Uses NAT64</t>
-        </list></t>
+        </list>
+      </t>
 
       <t>Recording the most common hostnames that require the DNS64 to
       synthesize would also allow to establish a list of the most prominent
@@ -521,21 +502,16 @@ noDerivativesTrust200902,
       <t>Following is a list of commonly used applications and services that
       are expected to operate, without incident, when used in an IPv6 only
       environment that utilizes NAT64 and DNS64. The list below is not
-      exhaustive.</t>
-
-      <t><list style="symbols">
+      exhaustive.
+        <list style="symbols">
           <t>VPN</t>
-
           <t>Chat</t>
-
           <t>Email</t>
-
           <t>SSH/Telnet</t>
-
           <t>Git</t>
-
           <t>Voice</t>
-        </list></t>
+        </list>
+      </t>
 
       <t>Recording the most common hostnames that require the DNS64 to
       synthesize would also allow to establish a list of the most prominent
@@ -563,7 +539,7 @@ noDerivativesTrust200902,
       available to communicate with network operators. All of the items below
       must be available via dual stack connectivity.</t>
 
-      <section title="Reporting Issues (Ticketing) ">
+      <section title="Reporting Issues (Ticketing)">
         <t>Tools and systems that can be used to report issues with
         applications, services, or content must be available for end-users.
         Network and systems operators are responsible for acknowledging and
@@ -575,7 +551,7 @@ noDerivativesTrust200902,
         application, or service.</t>
       </section>
 
-      <section title="Interactive support (Slack, email) ">
+      <section title="Interactive support (Slack, email)">
         <t>Interactive support is often desired in lieu or in conjunction with
         traditional support models like trouble ticket creation. It is
         recommended that interactive support be available via real time and
@@ -601,7 +577,7 @@ noDerivativesTrust200902,
     </section>
 
     <section anchor="iana" title="IANA Considerations">
-      <t>No IANA considerations are defined at this time.</t>
+      <t>This memo includes no request to IANA.</t>
     </section>
 
     <section anchor="security" title="Security Considerations">
@@ -632,7 +608,7 @@ noDerivativesTrust200902,
 
           <t>Disabling IPv4 stacks at some point in the future</t>
 
-          <t>Fulling deprecating fallback, legacy IPv4 network</t>
+          <t>Fully deprecating the fallback legacy IPv4 network</t>
         </list></t>
     </section>
 
@@ -646,7 +622,6 @@ noDerivativesTrust200902,
 
           <t>Google (Jen Linkova &lt;furry@google.com&gt;)</t>
 
-          <t>Apple (TBD)</t>
         </list></t>
     </section>
 
@@ -663,34 +638,35 @@ noDerivativesTrust200902,
   <back>
     <references title="Normative References">
       <?rfc include='reference.RFC.3315'?>
-
+      <?rfc include='reference.RFC.3646'?>
       <?rfc include='reference.RFC.3736'?>
-
+      <?rfc include='reference.RFC.4862'?>
       <?rfc include='reference.RFC.6052'?>
-
+      <?rfc include='reference.RFC.6106'?>
       <?rfc include='reference.RFC.6146'?>
-
       <?rfc include='reference.RFC.6147'?>
 
-      <?rfc include='reference.RFC.4862'?>
+      <reference anchor='HEv2'>
+          <front>
+              <title>Happy Eyeballs Version 2</title>
+              <author fullname="David Schinazi" initials="D." surname="Schinazi">
+                  <organization>Apple Inc.</organization>
+              </author>
+              <author fullname="Tommy Pauly" initials="T." surname="Pauly">
+                  <organization>Apple Inc.</organization>
+              </author>
+              <date month='June' year='2017' />
+          </front>
+          <seriesInfo name='Work in Progress,' value='draft-ietf-v6ops-rfc6555bis' />
+          <format type='TXT' target='https://tools.ietf.org/id/draft-ietf-v6ops-rfc6555bis.txt' />
+      </reference>
 
-      <?rfc include='reference.RFC.3646'?>
-
-      <?rfc include='reference.RFC.6106'?>
-
-      <?rfc include='reference.RFC.7527'?>
     </references>
 
     <references title="Informative References">
-      <?rfc include='reference.RFC.6535'?>
-
-      <?rfc include='reference.RFC.6144'?>
-
-      <?rfc include='reference.RFC.6877'?>
-
-      <?rfc include='reference.RFC.7050'?>
-
       <?rfc include='reference.RFC.3927'?>
+      <?rfc include='reference.RFC.6535'?>
+      <?rfc include='reference.RFC.6877'?>
     </references>
   </back>
 </rfc>
