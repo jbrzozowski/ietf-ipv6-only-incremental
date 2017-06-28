@@ -5,7 +5,7 @@
 v6ops                                                      J. Brzozowski
 Internet-Draft                                             Comcast Cable
 Intended status: Best Current Practice                       D. Schinazi
-Expires: December 28, 2017                                   S. Cheshire
+Expires: December 29, 2017                                   S. Cheshire
                                                               Apple Inc.
                                                               L. Colitti
                                                                 E. Kline
@@ -15,7 +15,7 @@ Expires: December 28, 2017                                   S. Cheshire
                                                                Microsoft
                                                                  P. Saab
                                                                 Facebook
-                                                           June 26, 2017
+                                                           June 27, 2017
 
 
       Incremental Deployment of IPv6-only Wi-Fi for IETF Meetings
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 28, 2017.
+   This Internet-Draft will expire on December 29, 2017.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Brzozowski, et al.      Expires December 28, 2017               [Page 1]
+Brzozowski, et al.      Expires December 29, 2017               [Page 1]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -76,28 +76,31 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
    2.  Design Principles . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Network Infrastructure  . . . . . . . . . . . . . . . . .   3
    3.  Network Services  . . . . . . . . . . . . . . . . . . . . . .   5
      3.1.  DNS64 . . . . . . . . . . . . . . . . . . . . . . . . . .   5
      3.2.  NAT64 . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     3.3.  DHCPv6  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     3.3.  DHCPv6  . . . . . . . . . . . . . . . . . . . . . . . . .   6
    4.  User Equipment  . . . . . . . . . . . . . . . . . . . . . . .   6
-   5.  Network Management  . . . . . . . . . . . . . . . . . . . . .   6
-   6.  Telemetry and Monitoring  . . . . . . . . . . . . . . . . . .   7
-   7.  Support for User Applications and Services  . . . . . . . . .   8
+     4.1.  Host Address Assignment and Configuration . . . . . . . .   6
+     4.2.  IPv4 support  . . . . . . . . . . . . . . . . . . . . . .   7
+   5.  Network Management  . . . . . . . . . . . . . . . . . . . . .   7
+   6.  Telemetry and Monitoring  . . . . . . . . . . . . . . . . . .   8
+   7.  Support for User Applications and Services  . . . . . . . . .   9
    8.  Support and Operations  . . . . . . . . . . . . . . . . . . .   9
-     8.1.  Reporting Issues (Ticketing)  . . . . . . . . . . . . . .   9
-     8.2.  Interactive support (Slack, email)  . . . . . . . . . . .   9
-   9.  Known Client-side Issues  . . . . . . . . . . . . . . . . . .   9
-   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
-   11. Security Considerations . . . . . . . . . . . . . . . . . . .  10
-   12. Future Work . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     8.1.  Reporting Issues (Ticketing)  . . . . . . . . . . . . . .  10
+     8.2.  Interactive Support . . . . . . . . . . . . . . . . . . .  10
+   9.  Known Client-side Issues  . . . . . . . . . . . . . . . . . .  10
+   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .  11
+   12. Future Work . . . . . . . . . . . . . . . . . . . . . . . . .  11
    13. Related Industry Efforts  . . . . . . . . . . . . . . . . . .  11
-   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
-     14.1.  Normative References . . . . . . . . . . . . . . . . . .  11
-     14.2.  Informative References . . . . . . . . . . . . . . . . .  12
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
+   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
+     14.1.  Normative References . . . . . . . . . . . . . . . . . .  12
+     14.2.  Informative References . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
 
 
 
@@ -106,10 +109,7 @@ Table of Contents
 
 
 
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 2]
+Brzozowski, et al.      Expires December 29, 2017               [Page 2]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -126,7 +126,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    on running code.  As such IETF meetings were one of the first
    deployments of a dual-stack network to help test the first
    implementations of IPv6.  Many years later, as several networks are
-   shifting towards IPv6-only, it is the reponsibility of the IETF to
+   shifting towards IPv6-only, it is the responsibility of the IETF to
    lead the trend and make their main network IPv6-only.
 
    This document outlines the requirements and design principles for an
@@ -139,6 +139,13 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    this document.  This document focuses on the explicit provisioning of
    IPv6-only using NAT64 RFC6146 [RFC6146] and DNS64 RFC6147 [RFC6147]
    to access IPv4-only content and services.
+
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   "Key words for use in RFCs to Indicate Requirement Levels" [RFC2119].
 
 2.  Design Principles
 
@@ -156,19 +163,17 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    local IPv4 RFC3927 [RFC3927] will likely remain active and will
    appear on hosts and network infrastructure.
 
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 3]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
    The following section outlines the requirement to provisioning
    IPv6-only.  We minimally assume that SLAAC will be utilized, however,
    for completeness the parameters required for DHCPv6 RFC3315 [RFC3315]
    and RFC3736 [RFC3736] are also provided:
-
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 3]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
 
    o  IPv6-only - hosts are expected to be provisioned with IPv6-only
       connectivity, however, link local IPv4 is likely to be present.
@@ -186,11 +191,11 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    o  DHCPv6 support should be included but is not required, as such
       both the M and O bits must be set to 1 (one).  Whether stateless
       or stateful DHCPv6 is used both the DNS Server IPv6 address and
-      DNS Search List options RFC6106 [RFC6106] must minimally be
+      DNS Search List options RFC8106 [RFC8106] must minimally be
       included.  The DNS server IPv6 address(es) must be those used for
       DNS64.  It is recommended that these values be identical to those
       used in the IPv6 router advertisements that include the RDNSS
-      RFC6106 [RFC6106] options.  If DHCPv6 support is deployed
+      RFC8106 [RFC8106] options.  If DHCPv6 support is deployed
       stateless DHCPv6 must minimally be available.
 
    o  IPv6 router advertisements must include the RDNSS options.  Both
@@ -213,18 +218,18 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
       For wired network connectivity having secondary ports that are
       dual stack enabled is also recommended.
 
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 4]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
    This document assumes that dual stack connectivity is available by
    default and that IPv4-only connectivity is no longer supported.  As
    such it is out of scope for this document outline fallback or access
    to legacy connectivity that is IPv4-only.
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 4]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
 
 3.  Network Services
 
@@ -262,6 +267,21 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
       recommended to allocate IPv4 ports per device in an effort to
       maximize IPv4 utilization for NAT64.
 
+
+
+
+
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 5]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
 3.3.  DHCPv6
 
    Support for DHCPv6 may be required in some deployments.  If required,
@@ -271,16 +291,6 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Stateless DHCPv6 SHOULD be supported to facilitate the
       transmission of DNS servers IPv6 address(es) and DNS search lists.
-
-
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 5]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
 
    o  Stateful DHCPv6 for address assignment MAY be supported, but is
       not required.  If stateful DHCPv6 is used the DNS parameters
@@ -294,11 +304,11 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 4.  User Equipment
 
-   Host Address Assignment and Configuration:
+4.1.  Host Address Assignment and Configuration
 
    o  Hosts MUST support SLAAC.
 
-   o  Hosts SHOULD support RDNSS RFC6106 [RFC6106] for the acquisition
+   o  Hosts SHOULD support RDNSS RFC8106 [RFC8106] for the acquisition
       of DNS server IPv6 addresses and a DNS Search List.
 
    o  Hosts MAY support DHCPv6 for address acquisition, the use of
@@ -308,17 +318,41 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
       list option 24 RFC3646 [RFC3646] address MUST be implemented if
       DHCPv6 is to be utilized.
 
-   IPv4 support:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 6]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
+4.2.  IPv4 support
 
    o  The IPv4 stacks of hosts MAY remain enabled, which means that Link
       Local IPv4 RFC3927 [RFC3927] (168.254/16) addresses MAY continue
       to be present and in use.  Disabling of the IPv4 stack of hosts is
       out of scope for this document.
 
-   o  Hosts MUST support connecting to IPv4-only servers by using the
-      NAT64/DNS64.  Possible solutions include 464XLAT RFC6877
-      [RFC6877], "Bump-in-the-Host" RFC6535 [RFC6535] and Happy Eyeballs
-      v2 [HEv2].
+   o  Host operating systems SHOULD provide a means for applications to
+      easily connect to IPv4-only servers by using the NAT64/DNS64.
+      While modern applications simply need to make AAAA queries and
+      connect to the resulting IPv6 address, operating systems should
+      provide simple ways for applications to do so or even connect to
+      IPv4 literals in the absence of host names.  Possible solutions
+      include 464XLAT RFC6877 [RFC6877], "Bump-in-the-Host" RFC6535
+      [RFC6535] and Happy Eyeballs v2 [HEv2].
 
 5.  Network Management
 
@@ -331,30 +365,34 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    relevance of the same to the focus of this draft some guidance is
    being provided.
 
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 6]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
    Strictly speaking the primary requirement for the underlying network
    is that IPv6 is supported along with the services required to enable
    the use of NAT64 and DNS64.  This suggests that the underlying
    network could in fact be dual stack for management and operations.
    It is required that the provisioning of IPv4 for user equipment and
    host connectivity not be supported.  User equipment or host facing
-   interfaces must not have following:
-
-   o  Non-link local IPv4 addresses
-
-   o  DHCPv4 is not supported or enabled
-
-   o  DNS services over IPv4 is not supported or enabled
+   interfaces MUST NOT acquire non-link-local IPv4 addresses or IPv4 DNS
+   server addresses.  Additionally, the network MUST NOT respond to
+   DHCPv4 requests or DNS queries sent over IPv4.
 
    Given the above, within a given VLAN it is possible and likely that
    IPv4 may be observed, present, and possibly used.  It is out of scope
    for this document to prevent the use of IPv4 entirely.
+
+
+
+
+
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 7]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
 
    Depending on the level of readiness IPv6-only network management may
    or may not be possible.  Network management and operations includes
@@ -386,14 +424,6 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    We can measure how hosts:
 
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 7]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
    o  Configure IPv6 addresses (SLAAC, DHCPv6) and which ones they use
 
    o  Configure DNS server addresses (RDNSS vs DHCPv6)
@@ -412,11 +442,22 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    IPv4 link-local on an IPv6-only network will also help prepare for
    the time when routers stop switching IPv4 traffic altogether.
 
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 8]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
    Given that some users may have devices running legacy IPv4-only
    software, the network should provide a different fallback network
    that is dual-stack.  It is worth measuring the number of users that
    switch to this network, and possibly use an anonymous survey asking
-   users what software failure caused them to switch.
+   users what software failure caused them to switch.  Additionally, the
+   fallback network SHOULD use different authentication credentials per
+   meeting (such as SSID) to make sure a failure causing a user to
+   switch doesn't mean they will stay on the fallback network forever.
 
 7.  Support for User Applications and Services
 
@@ -437,29 +478,6 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Voice
 
-   Recording the most common hostnames that require the DNS64 to
-   synthesize would also allow to establish a list of the most prominent
-   IPv4-only services.
-
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 8]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
-   Observing the TCP/UDP ports used by applications that still leverage
-   IPv4 link-local on an IPv6-only network will also help prepare for
-   the time when routers stop switching IPv4 traffic altogether.
-
-   Given that some users may have devices running legacy IPv4-only
-   software, the network should provide a different fallback network
-   that is dual-stack.  It is worth measuring the number of users that
-   switch to this network, and possibly use an anonymous survey asking
-   users what software failure caused them to switch.
-
 8.  Support and Operations
 
    Most every network has customers or end users of some sort, therefore
@@ -473,6 +491,21 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    available to communicate with network operators.  All of the items
    below must be available via dual stack connectivity.
 
+
+
+
+
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017               [Page 9]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
 8.1.  Reporting Issues (Ticketing)
 
    Tools and systems that can be used to report issues with
@@ -485,7 +518,15 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    ensure that end users can access the desired content, application, or
    service.
 
-8.2.  Interactive support (Slack, email)
+   In order for users experiencing IPv6-specific issues to be able to
+   report them, the ticketing system MUST also be reachable over the
+   dual-stack fallback network.  The existence of the fallback network
+   SHOULD also be made clear to users ahead of time.  In order to help
+   narrow down issues, the ticketing system SHOULD ask the user whether
+   the issue is specific to IPv6-only and whether they've experienced
+   the issue or a different outcome on the fallback network.
+
+8.2.  Interactive Support
 
    Interactive support is often desired in lieu or in conjunction with
    traditional support models like trouble ticket creation.  It is
@@ -497,25 +538,29 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    Following are known client side issues that are specific to the
    deployment of IPv6-only networks and/or the use of NAT64/DNS64:
 
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017               [Page 9]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
    o  Use of literal IPv4 addresses - the use of literal IPv4 addresses
       is a known issue given the approach that is documented in this
       I-D.  Addressing the use of literal IPv4 addresses is out of scope
       for this document.
+
+   o  Applications that explicitly require IPv4 by only performing AAAA
+      queries or restricting the type of underlying socket they use.
 
    o  Unreachable but valid AAAA RR in the DNS - in some cases a valid
       AAAA RR is returns by the DNS, however, if the same is unreachable
       or is not configured the presence of the same will prevent a DNS64
       query which in turn prevents the use of the NAT64 to reach the
       target host references by the address in the AAAA DNS RR.
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017              [Page 10]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
 
 10.  IANA Considerations
 
@@ -551,17 +596,6 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Fully deprecating the fallback legacy IPv4 network
 
-
-
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017              [Page 10]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
 13.  Related Industry Efforts
 
    o  Comcast new building and IPv6-only (John Jason Brzozowski
@@ -572,12 +606,29 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Google (Jen Linkova <furry@google.com>)
 
+
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017              [Page 11]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
 14.  References
 
 14.1.  Normative References
 
    [HEv2]     Schinazi, D. and T. Pauly, "Happy Eyeballs Version 2",
               Work in Progress, draft-ietf-v6ops-rfc6555bis, June 2017.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
               C., and M. Carney, "Dynamic Host Configuration Protocol
@@ -603,21 +654,6 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
               DOI 10.17487/RFC6052, October 2010,
               <http://www.rfc-editor.org/info/rfc6052>.
 
-   [RFC6106]  Jeong, J., Park, S., Beloeil, L., and S. Madanapalli,
-              "IPv6 Router Advertisement Options for DNS Configuration",
-              RFC 6106, DOI 10.17487/RFC6106, November 2010,
-              <http://www.rfc-editor.org/info/rfc6106>.
-
-
-
-
-
-
-Brzozowski, et al.      Expires December 28, 2017              [Page 11]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
-
    [RFC6146]  Bagnulo, M., Matthews, P., and I. van Beijnum, "Stateful
               NAT64: Network Address and Protocol Translation from IPv6
               Clients to IPv4 Servers", RFC 6146, DOI 10.17487/RFC6146,
@@ -628,6 +664,20 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
               Translation from IPv6 Clients to IPv4 Servers", RFC 6147,
               DOI 10.17487/RFC6147, April 2011,
               <http://www.rfc-editor.org/info/rfc6147>.
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017              [Page 12]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
+   [RFC8106]  Jeong, J., Park, S., Beloeil, L., and S. Madanapalli,
+              "IPv6 Router Advertisement Options for DNS Configuration",
+              RFC 8106, DOI 10.17487/RFC8106, March 2017,
+              <http://www.rfc-editor.org/info/rfc8106>.
 
 14.2.  Informative References
 
@@ -669,7 +719,13 @@ Authors' Addresses
 
 
 
-Brzozowski, et al.      Expires December 28, 2017              [Page 12]
+
+
+
+
+
+
+Brzozowski, et al.      Expires December 29, 2017              [Page 13]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -725,4 +781,4 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 28, 2017              [Page 13]
+Brzozowski, et al.      Expires December 29, 2017              [Page 14]

@@ -160,7 +160,7 @@ noDerivativesTrust200902,
       </address>
     </author>
 
-    <date day="26" month="June" year="2017" />
+    <date day="27" month="June" year="2017" />
 
     <!-- Meta-data Declarations -->
 
@@ -190,7 +190,7 @@ noDerivativesTrust200902,
       on running code. As such IETF meetings were one of the first
       deployments of a dual-stack network to help test the first
       implementations of IPv6. Many years later, as several networks are
-      shifting towards IPv6-only, it is the reponsibility of the IETF to
+      shifting towards IPv6-only, it is the responsibility of the IETF to
       lead the trend and make their main network IPv6-only.</t>
 
       <t>This document outlines the requirements and design principles for an IPv6-only
@@ -203,6 +203,14 @@ noDerivativesTrust200902,
       This document focuses on the explicit provisioning of IPv6-only using
       NAT64 <xref target="RFC6146">RFC6146</xref> and DNS64 <xref
       target="RFC6147">RFC6147</xref> to access IPv4-only content and services.</t>
+
+      <section title="Requirements Language">
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document are to be interpreted as described in
+        "Key words for use in RFCs to Indicate Requirement Levels"
+        <xref target="RFC2119"/>.</t>
+      </section>
     </section>
 
     <section title="Design Principles">
@@ -219,6 +227,7 @@ noDerivativesTrust200902,
         target="RFC3927">RFC3927</xref> will likely remain active and will
         appear on hosts and network infrastructure.</t>
 
+        <?rfc needLines="10" ?>
         <t>The following section outlines the requirement to provisioning
         IPv6-only. We minimally assume that SLAAC will be utilized, however, for
         completeness the parameters required for DHCPv6 <xref
@@ -243,11 +252,11 @@ noDerivativesTrust200902,
             <t>DHCPv6 support should be included but is not required, as such
             both the M and O bits must be set to 1 (one). Whether stateless or
             stateful DHCPv6 is used both the DNS Server IPv6 address and DNS
-            Search List options <xref target="RFC6106">RFC6106</xref> must
+            Search List options <xref target="RFC8106">RFC8106</xref> must
             minimally be included. The DNS server IPv6 address(es) must be
             those used for DNS64. It is recommended that these values be
             identical to those used in the IPv6 router advertisements that
-            include the RDNSS <xref target="RFC6106">RFC6106</xref> options.
+            include the RDNSS <xref target="RFC8106">RFC8106</xref> options.
             If DHCPv6 support is deployed stateless DHCPv6 must minimally be
             available.</t>
 
@@ -318,6 +327,7 @@ noDerivativesTrust200902,
             maximize IPv4 utilization for NAT64.</t>
           </list>
         </t>
+      <?rfc needLines="10" ?>
       </section>
 
       <section title="DHCPv6">
@@ -345,11 +355,11 @@ noDerivativesTrust200902,
     </section>
 
     <section title="User Equipment">
-      <t>Host Address Assignment and Configuration:
-        <list style="symbols">
+      <section title="Host Address Assignment and Configuration">
+        <t><list style="symbols">
           <t>Hosts MUST support SLAAC.</t>
 
-          <t>Hosts SHOULD support RDNSS <xref target="RFC6106">RFC6106</xref>
+          <t>Hosts SHOULD support RDNSS <xref target="RFC8106">RFC8106</xref>
           for the acquisition of DNS
           server IPv6 addresses and a DNS Search List.</t>
 
@@ -359,23 +369,29 @@ noDerivativesTrust200902,
           <t>DHCPv6 option to configure DNS server option 23 and domain search
           list option 24 <xref target="RFC3646">RFC3646</xref>
           address MUST be implemented if DHCPv6 is to be utilized.</t>
-        </list>
-      </t>
+        </list></t>
+        <?rfc needLines="16" ?>
+      </section>
 
-      <t>IPv4 support:
-          <list style="symbols">
+      <section title="IPv4 support">
+          <t><list style="symbols">
             <t>The IPv4 stacks of hosts MAY remain enabled, which means that
             Link Local IPv4 <xref target="RFC3927">RFC3927</xref>
             (168.254/16) addresses MAY continue to be
             present and in use. Disabling of the IPv4 stack of hosts is out of
             scope for this document.</t>
 
-            <t>Hosts MUST support connecting to IPv4-only servers by using the
-            NAT64/DNS64. Possible solutions include 464XLAT <xref target="RFC6877">RFC6877</xref>,
+            <t>Host operating systems SHOULD provide a means for applications to
+            easily connect to IPv4-only servers by using the NAT64/DNS64. While modern
+            applications simply need to make AAAA queries and connect to the
+            resulting IPv6 address, operating systems should provide simple
+            ways for applications to do so or even connect to IPv4 literals
+            in the absence of host names.
+            Possible solutions include 464XLAT <xref target="RFC6877">RFC6877</xref>,
             "Bump-in-the-Host" <xref target="RFC6535">RFC6535</xref> and Happy Eyeballs v2
             <xref target="HEv2"/>.</t>
-          </list>
-        </t>
+          </list></t>
+      </section>
     </section>
 
     <section title="Network Management">
@@ -392,19 +408,16 @@ noDerivativesTrust200902,
       use of NAT64 and DNS64. This suggests that the underlying network could
       in fact be dual stack for management and operations. It is required that
       the provisioning of IPv4 for user equipment and host connectivity not be
-      supported. User equipment or host facing interfaces must not have
-      following:
-        <list style="symbols">
-          <t>Non-link local IPv4 addresses</t>
-          <t>DHCPv4 is not supported or enabled</t>
-          <t>DNS services over IPv4 is not supported or enabled</t>
-        </list>
-      </t>
+      supported. User equipment or host facing interfaces MUST NOT acquire
+      non-link-local IPv4 addresses or IPv4 DNS server addresses. Additionally,
+      the network MUST NOT respond to DHCPv4 requests or DNS queries sent over
+      IPv4.</t>
 
       <t>Given the above, within a given VLAN it is possible and likely that
       IPv4 may be observed, present, and possibly used. It is out of scope for
       this document to prevent the use of IPv4 entirely.</t>
 
+      <?rfc needLines="16" ?>
       <t>Depending on the level of readiness IPv6-only network management may
       or may not be possible. Network management and operations includes but
       is not limited to the following:
@@ -456,10 +469,13 @@ noDerivativesTrust200902,
       software, the network should provide a different fallback network that
       is dual-stack. It is worth measuring the number of users that switch to
       this network, and possibly use an anonymous survey asking users what
-      software failure caused them to switch.</t>
+      software failure caused them to switch. Additionally, the fallback
+      network SHOULD use different authentication credentials per meeting
+      (such as SSID) to make sure a failure causing a user to switch
+      doesn't mean they will stay on the fallback network forever.</t>
     </section>
 
-    <section title="Support for User Applications and Services ">
+    <section title="Support for User Applications and Services">
       <t>Following is a list of commonly used applications and services that
       are expected to operate, without incident, when used in an IPv6-only
       environment that utilizes NAT64 and DNS64. The list below is not
@@ -473,20 +489,6 @@ noDerivativesTrust200902,
           <t>Voice</t>
         </list>
       </t>
-
-      <t>Recording the most common hostnames that require the DNS64 to
-      synthesize would also allow to establish a list of the most prominent
-      IPv4-only services.</t>
-
-      <t>Observing the TCP/UDP ports used by applications that still leverage
-      IPv4 link-local on an IPv6-only network will also help prepare for the
-      time when routers stop switching IPv4 traffic altogether.</t>
-
-      <t>Given that some users may have devices running legacy IPv4-only
-      software, the network should provide a different fallback network that
-      is dual-stack. It is worth measuring the number of users that switch to
-      this network, and possibly use an anonymous survey asking users what
-      software failure caused them to switch.</t>
     </section>
 
     <section title="Support and Operations">
@@ -500,6 +502,7 @@ noDerivativesTrust200902,
       available to communicate with network operators. All of the items below
       must be available via dual stack connectivity.</t>
 
+      <?rfc needLines="16" ?>
       <section title="Reporting Issues (Ticketing)">
         <t>Tools and systems that can be used to report issues with
         applications, services, or content must be available for end-users.
@@ -510,9 +513,17 @@ noDerivativesTrust200902,
         network and system operators may need to implement temporary
         workarounds to ensure that end users can access the desired content,
         application, or service.</t>
+
+        <t>In order for users experiencing IPv6-specific issues to be able to
+        report them, the ticketing system MUST also be reachable over the
+        dual-stack fallback network. The existence of the fallback network
+        SHOULD also be made clear to users ahead of time. In order to help
+        narrow down issues, the ticketing system SHOULD ask the user whether
+        the issue is specific to IPv6-only and whether they've experienced the
+        issue or a different outcome on the fallback network.</t>
       </section>
 
-      <section title="Interactive support (Slack, email)">
+      <section title="Interactive Support">
         <t>Interactive support is often desired in lieu or in conjunction with
         traditional support models like trouble ticket creation. It is
         recommended that interactive support be available via real time and
@@ -528,6 +539,9 @@ noDerivativesTrust200902,
           is a known issue given the approach that is documented in this I-D.
           Addressing the use of literal IPv4 addresses is out of scope for
           this document.</t>
+
+          <t>Applications that explicitly require IPv4 by only performing AAAA
+          queries or restricting the type of underlying socket they use.</t>
 
           <t>Unreachable but valid AAAA RR in the DNS - in some cases a valid
           AAAA RR is returns by the DNS, however, if the same is unreachable
@@ -599,12 +613,13 @@ noDerivativesTrust200902,
 
   <back>
     <references title="Normative References">
+      <?rfc include='reference.RFC.2119'?>
       <?rfc include='reference.RFC.3315'?>
       <?rfc include='reference.RFC.3646'?>
       <?rfc include='reference.RFC.3736'?>
       <?rfc include='reference.RFC.4862'?>
       <?rfc include='reference.RFC.6052'?>
-      <?rfc include='reference.RFC.6106'?>
+      <?rfc include='reference.RFC.8106'?>
       <?rfc include='reference.RFC.6146'?>
       <?rfc include='reference.RFC.6147'?>
 
