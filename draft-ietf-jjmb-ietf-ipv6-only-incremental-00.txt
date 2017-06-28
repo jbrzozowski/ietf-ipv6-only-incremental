@@ -151,8 +151,8 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 2.1.  Network Infrastructure
 
-   The following a specific network design details that are minimally
-   required to support an IPv6-only network that utilized NAT64 and
+   The following are specific network design details that are minimally
+   required to support an IPv6-only network that utilize NAT64 and
    DNS64.  The following have been drawn from real deployment scenarios
    for large scale uses of IPv6-only with NAT64 and DNS64.  The
    parameters specified here are specific to providing IPv6-only
@@ -175,7 +175,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    for completeness the parameters required for DHCPv6 RFC3315 [RFC3315]
    and RFC3736 [RFC3736] are also provided:
 
-   o  IPv6-only - hosts are expected to be provisioned with IPv6-only
+   o  IPv6-only hosts are expected to be provisioned with IPv6-only
       connectivity, however, link local IPv4 is likely to be present.
 
    o  RA interval is minimally recommended to be set to 4 seconds.
@@ -358,8 +358,8 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    The focus of this document is user equipment and hosts.  The network
    and network service requirements are oriented around providing
-   IPv6-only connectivity to use to allow for the use of NAT64 and DNS64
-   to maintain reachability to IPv4-only content, applications, and
+   IPv6-only connectivity that allows for the use of NAT64 and DNS64 to
+   maintain reachability to IPv4-only content, applications, and
    services.  Operations and management of the underlying network is
    technically out of scope for this document, however, given the
    relevance of the same to the focus of this draft some guidance is
@@ -416,11 +416,12 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    At this point in time, IPv6-only networks with no IPv4 support at all
    are still not widespread and may expose issues in host operating
-   systems or applications.  It is therefore recommended to establish
-   telemetry of how hosts are getting addresses provisioned and
-   accessing the Internet.  In order to preserve the privacy of users of
-   the network, it is paramount that connectivity information (e.g.
-   DNS64 records) cannot be correlated with individual client nodes.
+   systems or applications.  It is therefore recommended that telemetry
+   summarizing how hosts are being provisioned and accessing the
+   Internet be collected and analyzed.  In order to preserve the privacy
+   of users of the network, it is paramount that connectivity
+   information (e.g.  DNS64 records) cannot be correlated with
+   individual client nodes.
 
    We can measure how hosts:
 
@@ -434,14 +435,13 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Uses NAT64
 
-   Recording the most common hostnames that require the DNS64 to
-   synthesize would also allow to establish a list of the most prominent
-   IPv4-only services.
+   Recording the most common hostnames that require the DNS64 would also
+   allow operators to establish a list of the most prominent IPv4-only
+   services.
 
    Observing the TCP/UDP ports used by applications that still leverage
    IPv4 link-local on an IPv6-only network will also help prepare for
-   the time when routers stop switching IPv4 traffic altogether.
-
+   the time when routers stop supporting IPv4 communications altogether.
 
 
 
