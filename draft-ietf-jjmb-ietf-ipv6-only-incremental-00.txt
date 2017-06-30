@@ -5,7 +5,7 @@
 v6ops                                                      J. Brzozowski
 Internet-Draft                                             Comcast Cable
 Intended status: Best Current Practice                       D. Schinazi
-Expires: December 30, 2017                                   S. Cheshire
+Expires: January 1, 2018                                     S. Cheshire
                                                               Apple Inc.
                                                               L. Colitti
                                                                 E. Kline
@@ -15,7 +15,7 @@ Expires: December 30, 2017                                   S. Cheshire
                                                                Microsoft
                                                                  P. Saab
                                                                 Facebook
-                                                           June 28, 2017
+                                                           June 30, 2017
 
 
       Incremental Deployment of IPv6-only Wi-Fi for IETF Meetings
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 30, 2017.
+   This Internet-Draft will expire on January 1, 2018.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 1]
+Brzozowski, et al.       Expires January 1, 2018                [Page 1]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -94,12 +94,12 @@ Table of Contents
      8.2.  Interactive Support . . . . . . . . . . . . . . . . . . .  11
    9.  Known Client-side Issues  . . . . . . . . . . . . . . . . . .  11
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
-   11. Security Considerations . . . . . . . . . . . . . . . . . . .  12
-   12. Future Work . . . . . . . . . . . . . . . . . . . . . . . . .  12
-   13. Related Industry Efforts  . . . . . . . . . . . . . . . . . .  12
-   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
-     14.1.  Normative References . . . . . . . . . . . . . . . . . .  13
-     14.2.  Informative References . . . . . . . . . . . . . . . . .  14
+     10.1.  Security Considerations  . . . . . . . . . . . . . . . .  12
+   11. Future Work . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   12. Related Industry Efforts  . . . . . . . . . . . . . . . . . .  12
+   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     13.1.  Normative References . . . . . . . . . . . . . . . . . .  13
+     13.2.  Informative References . . . . . . . . . . . . . . . . .  14
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 2]
+Brzozowski, et al.       Expires January 1, 2018                [Page 2]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -165,7 +165,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 3]
+Brzozowski, et al.       Expires January 1, 2018                [Page 3]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -194,7 +194,11 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    o  IPv6-only hosts are expected to be provisioned with IPv6-only
       connectivity, however, link local IPv4 is likely to be present.
 
-   o  RA interval is minimally RECOMMENDED to be set to 4 seconds.
+   o  RA interval is RECOMMENDED to be minimally set to 600 seconds per
+      the guidance outlined in [RFC7772].
+
+   o  Support for solicited unicated router advertisements are also
+      recommended per [RFC7772]
 
    o  At least one prefix information option (PIO) MUST be included in
       router advertisements, the transmitted PIO MUST correspond to the
@@ -214,17 +218,18 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
       options [RFC8106].  If DHCPv6 support is deployed, stateless
       DHCPv6 MUST minimally be available.
 
+
+
+
+Brzozowski, et al.       Expires January 1, 2018                [Page 4]
+
+Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
+
+
    o  IPv6 router advertisements MUST include the DNS options [RFC8106].
       Both the DNS Server IPv6 address(es) and DNS Search List are
       REQUIRED.  If DHCPv6 support is deployed the values sent here for
       DNS RA options are RECOMMENDED to match those sent via DHCPv6.
-
-
-
-Brzozowski, et al.      Expires December 30, 2017               [Page 4]
-
-Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
-
 
    To ensure seamless and to support an incremental deployment of
    IPv6-only access to legacy dual stack infrastructure should remain
@@ -237,7 +242,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    ensure that users of IP networks, whether wired or wireless, have
    access to legacy dual stack infrastructure as a fallback.  For
    wireless network it is recommend to have a secondary SSID labelled
-   accordingly, e.g. example-ssid-dual-stack or example-ssid-legacy.
+   accordingly, e.g.  example-ssid-dual-stack or example-ssid-legacy.
    For wired network connectivity having secondary ports that are dual
    stack enabled is also recommended.  Note that while it is recommended
    to ensure the presence of a fallback network, the goal remains to
@@ -272,12 +277,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-
-
-
-
-
-Brzozowski, et al.      Expires December 30, 2017               [Page 5]
+Brzozowski, et al.       Expires January 1, 2018                [Page 5]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -315,7 +315,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  If, at some future date, support for IPv6 prefix delegation
       becomes necessary, stateful DHCPv6 will likely be mandatory
-      (Future Work (Section 12)).  The details of IPv6 prefix delegation
+      (Future Work (Section 11)).  The details of IPv6 prefix delegation
       are out of scope for this document.
 
 
@@ -333,7 +333,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 6]
+Brzozowski, et al.       Expires January 1, 2018                [Page 6]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -369,6 +369,11 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    the absence of host names.  Possible solutions include 464XLAT
    [RFC6877], "Bump-in-the-Host" [RFC6535] and Happy Eyeballs v2 [HEv2].
 
+   Finally, it is recommended that support for DHCPv4 be explicitly
+   suppressed in particular to prevent the inadvertent assigned of IPv4
+   address on a network(s) that does not have a valid IPv4 egress.
+   DHCPv4 servers, rogue or otherwise, could adversely impact the
+   experience of end users of the IPv6 only network.
 
 
 
@@ -384,12 +389,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-
-
-
-
-
-Brzozowski, et al.      Expires December 30, 2017               [Page 7]
+Brzozowski, et al.       Expires January 1, 2018                [Page 7]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -445,7 +445,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 8]
+Brzozowski, et al.       Expires January 1, 2018                [Page 8]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -501,7 +501,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017               [Page 9]
+Brzozowski, et al.       Expires January 1, 2018                [Page 9]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -557,7 +557,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017              [Page 10]
+Brzozowski, et al.       Expires January 1, 2018               [Page 10]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -613,12 +613,12 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017              [Page 11]
+Brzozowski, et al.       Expires January 1, 2018               [Page 11]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
-11.  Security Considerations
+10.1.  Security Considerations
 
    The vastness of the IPv6 address space often makes it more difficult
    to scan the same unlike legacy IPv4-only or dual stack IP networks.
@@ -635,7 +635,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    DNS64 and NAT64 compared to traditional IPv4-only or dual stack
    networks.
 
-12.  Future Work
+11.  Future Work
 
    The following items are out of scope for this document, however, the
    following are listed as future work items specific to incremental
@@ -647,7 +647,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Fully deprecating the fallback legacy IPv4 network
 
-13.  Related Industry Efforts
+12.  Related Industry Efforts
 
    o  Comcast new building and IPv6-only (John Jason Brzozowski
       <john_brzozowski@comcast.com>)
@@ -669,14 +669,14 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017              [Page 12]
+Brzozowski, et al.       Expires January 1, 2018               [Page 12]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
-14.  References
+13.  References
 
-14.1.  Normative References
+13.1.  Normative References
 
    [HEv2]     Schinazi, D. and T. Pauly, "Happy Eyeballs Version 2",
               Work in Progress, draft-ietf-v6ops-rfc6555bis, June 2017.
@@ -725,17 +725,22 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017              [Page 13]
+Brzozowski, et al.       Expires January 1, 2018               [Page 13]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
+
+   [RFC7772]  Yourtchenko, A. and L. Colitti, "Reducing Energy
+              Consumption of Router Advertisements", BCP 202, RFC 7772,
+              DOI 10.17487/RFC7772, February 2016,
+              <http://www.rfc-editor.org/info/rfc7772>.
 
    [RFC8106]  Jeong, J., Park, S., Beloeil, L., and S. Madanapalli,
               "IPv6 Router Advertisement Options for DNS Configuration",
               RFC 8106, DOI 10.17487/RFC8106, March 2017,
               <http://www.rfc-editor.org/info/rfc8106>.
 
-14.2.  Informative References
+13.2.  Informative References
 
    [RFC3927]  Cheshire, S., Aboba, B., and E. Guttman, "Dynamic
               Configuration of IPv4 Link-Local Addresses", RFC 3927,
@@ -776,12 +781,7 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-Brzozowski, et al.      Expires December 30, 2017              [Page 14]
+Brzozowski, et al.       Expires January 1, 2018               [Page 14]
 
 Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
@@ -837,4 +837,4 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
 
 
-Brzozowski, et al.      Expires December 30, 2017              [Page 15]
+Brzozowski, et al.       Expires January 1, 2018               [Page 15]
