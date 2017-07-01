@@ -285,7 +285,7 @@ noDerivativesTrust200902,
             <t>RA interval is RECOMMENDED to be minimally set to 600 seconds
             per the guidance outlined in <xref target="RFC7772"></xref>.</t>
 
-            <t>Support for solicited unicated router advertisements are also
+            <t>Support for solicited unicast router advertisements are also
             recommended per <xref target="RFC7772"></xref></t>
 
             <t>At least one prefix information option (PIO) MUST be included
@@ -406,7 +406,7 @@ noDerivativesTrust200902,
         <t><list style="symbols">
             <t>Hosts MUST support SLAAC.</t>
 
-            <t>Hosts SHOULD support DNS RA options<xref
+            <t>Hosts SHOULD support DNS RA options <xref
             target="RFC8106"></xref> for the acquisition of DNS server IPv6
             addresses and a DNS Search List.</t>
 
@@ -435,11 +435,11 @@ noDerivativesTrust200902,
         target="RFC6535"></xref> and Happy Eyeballs v2 <xref
         target="HEv2"></xref>.</t>
 
-        <t>Finally, it is recommended that support for DHCPv4 be explicitly
-        suppressed in particular to prevent the inadvertent assigned of IPv4
-        address on a network(s) that does not have a valid IPv4 egress. DHCPv4
+        <t>Finally, it is RECOMMENDED that support for DHCPv4 be explicitly
+        suppressed in particular to prevent the inadvertent assignment of IPv4
+        addresses on networks that do not have a valid IPv4 egress. DHCPv4
         servers, rogue or otherwise, could adversely impact the experience of
-        end users of the IPv6 only network.</t>
+        end users of the IPv6-only network.</t>
 
         <?rfc needLines="20" ?>
       </section>

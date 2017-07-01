@@ -197,7 +197,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    o  RA interval is RECOMMENDED to be minimally set to 600 seconds per
       the guidance outlined in [RFC7772].
 
-   o  Support for solicited unicated router advertisements are also
+   o  Support for solicited unicast router advertisements are also
       recommended per [RFC7772]
 
    o  At least one prefix information option (PIO) MUST be included in
@@ -344,7 +344,7 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
 
    o  Hosts MUST support SLAAC.
 
-   o  Hosts SHOULD support DNS RA options[RFC8106] for the acquisition
+   o  Hosts SHOULD support DNS RA options [RFC8106] for the acquisition
       of DNS server IPv6 addresses and a DNS Search List.
 
    o  Hosts MAY support DHCPv6 for address acquisition, the use of
@@ -369,11 +369,11 @@ Internet-Draft      IETF IPv6-only Wi-Fi Incremental           June 2017
    the absence of host names.  Possible solutions include 464XLAT
    [RFC6877], "Bump-in-the-Host" [RFC6535] and Happy Eyeballs v2 [HEv2].
 
-   Finally, it is recommended that support for DHCPv4 be explicitly
-   suppressed in particular to prevent the inadvertent assigned of IPv4
-   address on a network(s) that does not have a valid IPv4 egress.
+   Finally, it is RECOMMENDED that support for DHCPv4 be explicitly
+   suppressed in particular to prevent the inadvertent assignment of
+   IPv4 addresses on networks that do not have a valid IPv4 egress.
    DHCPv4 servers, rogue or otherwise, could adversely impact the
-   experience of end users of the IPv6 only network.
+   experience of end users of the IPv6-only network.
 
 
 
