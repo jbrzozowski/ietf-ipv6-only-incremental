@@ -32,7 +32,7 @@ most I-Ds might want to use. (Here they are set differently than their defaults 
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="bcp" docName="draft-ietf-jjmb-ietf-ipv6-only-incremental-00"
+<rfc category="bcp" docName="draft-jjmb-v6ops-ietf-ipv6-only-incremental-00"
      ipr="trust200902">
   <!-- category values: std, bcp, info, exp, and historic
      ipr values: trust200902, noModificationTrust200902,
