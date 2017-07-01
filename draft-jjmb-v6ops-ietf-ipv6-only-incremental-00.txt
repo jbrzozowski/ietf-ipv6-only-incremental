@@ -19,7 +19,7 @@ Expires: January 1, 2018                                     S. Cheshire
 
 
       Incremental Deployment of IPv6-only Wi-Fi for IETF Meetings
-             draft-ietf-jjmb-ietf-ipv6-only-incremental-00
+             draft-jjmb-v6ops-ietf-ipv6-only-incremental-00
 
 Abstract
 
